@@ -29,6 +29,9 @@ import logging
 import schedule
 import time 
 
+from apscheduler.schedulers.blocking import BlockingScheduler
+sched = BlockingScheduler()
+
 def index(request):
     return render(request, "index.html", {"users": 1})
 
@@ -76,6 +79,7 @@ def getDataXoso():
             for item_aggelia in job.items.iter():
                 return item_aggelia  
 
+@sched.scheduled_job('interval', minutes=1)
 def jobRuning():
     # Enter ScrapingHub
     # Enter ScrapingHub
@@ -87,12 +91,7 @@ def jobRuning():
     # get spider
     spiderID = 'quotes'
     spider = project.spiders.get(spiderID) 
-    spider.jobs.run()
-
-schedule.every(1).minutes.do(jobRuning) 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+    spider.jobs.run() 
 
 def jobSchedule():
     schedule.every(1).minutes.do(jobRuning)
@@ -100,6 +99,9 @@ def jobSchedule():
     while True:
         schedule.run_pending()
         time.sleep(1)
+
+
+sched.start()
  
 # end common
 # *********************************************
