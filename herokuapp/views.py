@@ -35,7 +35,11 @@ def index(request):
 
 # *********************************************
 # begin common
+schedule.every(1).minutes.do(jobRuning)
 
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 # convert cursor to json data
 def dictfetchall(cursor):
@@ -96,9 +100,7 @@ def jobSchedule():
     while True:
         schedule.run_pending()
         time.sleep(1)
-
-
-jobSchedule()
+ 
 # end common
 # *********************************************
 
