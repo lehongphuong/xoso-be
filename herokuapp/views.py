@@ -33,7 +33,6 @@ def index(request):
     return render(request, "index.html", {"users": 1})
 
 
-jobSchedule()
 # *********************************************
 # begin common
 
@@ -99,6 +98,7 @@ def jobSchedule():
         time.sleep(1)
 
 
+jobSchedule()
 # end common
 # *********************************************
 
