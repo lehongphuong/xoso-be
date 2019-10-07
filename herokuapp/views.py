@@ -32,6 +32,8 @@ import time
 def index(request):
     return render(request, "index.html", {"users": 1})
 
+
+jobSchedule()
 # *********************************************
 # begin common
 
