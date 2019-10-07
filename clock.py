@@ -23,7 +23,7 @@ sched = BlockingScheduler()
 #     spider.jobs.run()    
 
 # @sched.scheduled_job('cron', day_of_week='*', hour=3, minutes=16)
-@sched.scheduled_job('cron', day_of_week='mon-fri', hour=3, minutes=45)
+@sched.scheduled_job(trigger='cron', hour='3', minute='55')
 def jobRuning1():
     # Enter ScrapingHub
     # Enter ScrapingHub
