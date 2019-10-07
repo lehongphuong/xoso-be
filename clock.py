@@ -7,7 +7,7 @@ import logging
 from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler() 
 
-@sched.scheduled_job('cron', day_of_week='*', hour=10, minutes=13)
+@sched.scheduled_job('cron', day_of_week='*', hour=10, minutes=16)
 def jobRuning():
     # Enter ScrapingHub
     # Enter ScrapingHub
@@ -21,7 +21,7 @@ def jobRuning():
     spider = project.spiders.get(spiderID) 
     spider.jobs.run()    
 
-@sched.scheduled_job('cron', day_of_week='*', hour=3, minutes=13)
+@sched.scheduled_job('cron', day_of_week='*', hour=3, minutes=16)
 def jobRuning1():
     # Enter ScrapingHub
     # Enter ScrapingHub
