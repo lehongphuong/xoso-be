@@ -26,8 +26,8 @@ from django.db import connection
 from scrapinghub import ScrapinghubClient
 import logging
 
-import schedule
-import time 
+# import schedule
+# import time 
 
 # from apscheduler.schedulers.blocking import BlockingScheduler
 # sched = BlockingScheduler()
@@ -71,37 +71,16 @@ def getDataXoso():
     job_keys = [j['key'] for j in jobs_summary]
 
     print(job_keys)
+    result = []
     for job_key in job_keys:
         job = project.jobs.get(job_key)
 
         # Check to see if the job was completed
         if job.metadata.get(u'close_reason') == u'finished':
-            for item_aggelia in job.items.iter():
-                return item_aggelia  
-
-# @sched.scheduled_job('interval', minutes=1)
-# def jobRuning():
-#     # Enter ScrapingHub
-#     # Enter ScrapingHub
-#     apikey = '40f9881d52794d7bb09b9f5ee6d12a3e'  # your API key as a string
-#     client = ScrapinghubClient(apikey)
-#     projectID = 410647
-#     project = client.get_project(projectID)
-
-#     # get spider
-#     spiderID = 'quotes'
-#     spider = project.spiders.get(spiderID) 
-#     spider.jobs.run() 
-
-# def jobSchedule():
-#     schedule.every(1).minutes.do(jobRuning)
-
-#     while True:
-#         schedule.run_pending()
-#         time.sleep(1)
-
-
-# sched.start()
+            for item in job.items.iter():
+                result.append(item)
+                
+            return result    
  
 # end common
 # *********************************************
@@ -121,7 +100,7 @@ def readDataXoSo(request, format=None):
 @api_view(['POST'])
 @parser_classes((JSONParser,))
 def startJob(request, format=None): 
-    jobSchedule()
+    # jobSchedule()
 
     return Response([{"result": "ok"}])
 
