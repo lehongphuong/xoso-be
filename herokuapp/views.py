@@ -29,8 +29,8 @@ import logging
 import schedule
 import time 
 
-from apscheduler.schedulers.blocking import BlockingScheduler
-sched = BlockingScheduler()
+# from apscheduler.schedulers.blocking import BlockingScheduler
+# sched = BlockingScheduler()
 
 def index(request):
     return render(request, "index.html", {"users": 1})
@@ -79,29 +79,29 @@ def getDataXoso():
             for item_aggelia in job.items.iter():
                 return item_aggelia  
 
-@sched.scheduled_job('interval', minutes=1)
-def jobRuning():
-    # Enter ScrapingHub
-    # Enter ScrapingHub
-    apikey = '40f9881d52794d7bb09b9f5ee6d12a3e'  # your API key as a string
-    client = ScrapinghubClient(apikey)
-    projectID = 410647
-    project = client.get_project(projectID)
+# @sched.scheduled_job('interval', minutes=1)
+# def jobRuning():
+#     # Enter ScrapingHub
+#     # Enter ScrapingHub
+#     apikey = '40f9881d52794d7bb09b9f5ee6d12a3e'  # your API key as a string
+#     client = ScrapinghubClient(apikey)
+#     projectID = 410647
+#     project = client.get_project(projectID)
 
-    # get spider
-    spiderID = 'quotes'
-    spider = project.spiders.get(spiderID) 
-    spider.jobs.run() 
+#     # get spider
+#     spiderID = 'quotes'
+#     spider = project.spiders.get(spiderID) 
+#     spider.jobs.run() 
 
-def jobSchedule():
-    schedule.every(1).minutes.do(jobRuning)
+# def jobSchedule():
+#     schedule.every(1).minutes.do(jobRuning)
 
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+#     while True:
+#         schedule.run_pending()
+#         time.sleep(1)
 
 
-sched.start()
+# sched.start()
  
 # end common
 # *********************************************
