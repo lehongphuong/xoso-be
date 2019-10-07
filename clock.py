@@ -7,7 +7,7 @@ import logging
 from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler() 
 
-@sched.scheduled_job('cron', hour=2, minutes=56)
+@sched.scheduled_job('cron', hour=2, minutes=57)
 def jobRuning():
     # Enter ScrapingHub
     # Enter ScrapingHub
@@ -21,7 +21,7 @@ def jobRuning():
     spider = project.spiders.get(spiderID) 
     spider.jobs.run()  
 
-@sched.scheduled_job('cron', hour=2, minutes=58)
+@sched.scheduled_job('cron', hour=2, minutes=59)
 def jobRuning1():
     # Enter ScrapingHub
     # Enter ScrapingHub
@@ -35,8 +35,8 @@ def jobRuning1():
     spider = project.spiders.get(spiderID) 
     spider.jobs.run() 
 
-@sched.scheduled_job('cron', hour=9, minutes=56)
-def jobRuning():
+@sched.scheduled_job('cron', hour=9, minutes=57)
+def jobRuning3():
     # Enter ScrapingHub
     # Enter ScrapingHub
     apikey = '40f9881d52794d7bb09b9f5ee6d12a3e'  # your API key as a string
@@ -49,8 +49,8 @@ def jobRuning():
     spider = project.spiders.get(spiderID) 
     spider.jobs.run()  
 
-@sched.scheduled_job('cron', hour=9, minutes=58)
-def jobRuning1():
+@sched.scheduled_job('cron', hour=9, minutes=59)
+def jobRuning4():
     # Enter ScrapingHub
     # Enter ScrapingHub
     apikey = '40f9881d52794d7bb09b9f5ee6d12a3e'  # your API key as a string
