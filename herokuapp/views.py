@@ -34,12 +34,7 @@ def index(request):
 
 
 # *********************************************
-# begin common
-schedule.every(1).minutes.do(jobRuning)
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# begin common 
 
 # convert cursor to json data
 def dictfetchall(cursor):
@@ -93,6 +88,11 @@ def jobRuning():
     spiderID = 'quotes'
     spider = project.spiders.get(spiderID) 
     spider.jobs.run()
+
+schedule.every(1).minutes.do(jobRuning) 
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 def jobSchedule():
     schedule.every(1).minutes.do(jobRuning)
