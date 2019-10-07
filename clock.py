@@ -1,14 +1,15 @@
 # https://devcenter.heroku.com/articles/clock-processes-python
 
-
+import datetime
 from scrapinghub import ScrapinghubClient
 import logging 
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler() 
 
-@sched.scheduled_job('cron', day_of_week='*', hour=10, minutes=16)
+@sched.scheduled_job('interval', minutes=1)
 def jobRuning():
+    print(datetime.datetime.now())
     # Enter ScrapingHub
     # Enter ScrapingHub
     apikey = '40f9881d52794d7bb09b9f5ee6d12a3e'  # your API key as a string
