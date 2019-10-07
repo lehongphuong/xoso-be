@@ -4,8 +4,17 @@ from . import views
 app_name = 'home'
 urlpatterns = [
     path('', views.index, name='index'), 
+
+    
     # *******************************************************
-    # begin Company
+    # begin xo so 
+    path('readDataXoSo', views.readDataXoSo, name='readDataXoSo'), 
+    path('startJob', views.startJob, name='startJob'), 
+    # *******************************************************
+    # begin xo so 
+
+    # *******************************************************
+    # begin Company 
     path('createDataCompany', views.createDataCompany, name='createDataCompany'),
     path('readDataCompany', views.readDataCompany, name='readDataCompany'),
     path('updateDataCompany', views.updateDataCompany, name='updateDataCompany'),
