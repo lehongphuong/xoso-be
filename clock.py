@@ -7,7 +7,7 @@ import logging
 from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler() 
  
-@sched.scheduled_job(trigger='interval', minute='1')
+@sched.scheduled_job('interval', minutes=1)
 def jobRuning00():
     # Enter ScrapingHub
     # Enter ScrapingHub
